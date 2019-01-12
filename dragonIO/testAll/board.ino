@@ -11,6 +11,20 @@ void setup() {
 	Serial.begin(115200);
 }
 
+void testEncoder() {
+	pinMode(11, INPUT);
+	pinMode(12, INPUT);
+	pinMode(13, INPUT);
+
+	int v1 = digitalRead(11);
+	int v2 = digitalRead(12);
+	int v3 = digitalRead(13);
+
+	Serial.print(v1);
+	Serial.print(v2);
+	Serial.println(v3);
+}
+
 int pastLightVal = 0;
 int pastButtonVal = 0;
 int pastTouchVal = 0;
@@ -21,6 +35,8 @@ void loop() {
 	int buttonVal = digitalRead(button);
 	int touchVal = digitalRead(touch);
 	int rotaryVal = analogRead(rotary);
+
+	testEncoder();
 	
 	int nowTime = millis();
 	if (nowTime - rotaryTime > 1000) {
