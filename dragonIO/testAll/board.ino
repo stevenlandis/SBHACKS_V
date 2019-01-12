@@ -12,17 +12,19 @@ void setup() {
 }
 
 void testEncoder() {
+	pinMode(10, INPUT);
 	pinMode(11, INPUT);
 	pinMode(12, INPUT);
-	pinMode(13, INPUT);
 
-	int v1 = digitalRead(11);
-	int v2 = digitalRead(12);
-	int v3 = digitalRead(13);
+	int v1 = digitalRead(10);
+	int v2 = digitalRead(11);
+	int v3 = digitalRead(12);
 
 	Serial.print(v1);
 	Serial.print(v2);
 	Serial.println(v3);
+
+	delay(100);
 }
 
 int pastLightVal = 0;
