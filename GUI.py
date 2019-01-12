@@ -52,11 +52,12 @@ def LEDCallBack():
 def turnNobCallBack():
    messagebox.showinfo( "Hello Python", "Hello World")
 
-helloButton = Button(top, text ="Hello", command = helloCallBack)
-touchButton = Button(top, text ="Touch Sensor", command = touchCallBack)
-temperatureButton = Button(top, text ="Temperature Sensor", command = temperatureCallBack)
-LEDButton = Button(top, text ="LED", command = LEDCallBack)
-turnNobButton = Button(top, text ="Turn Nob", command = turnNobCallBack)
+helloButton = Button(top, text ="            Hello              ",fg = "red", command = helloCallBack)
+touchButton = Button(top, text ="     Touch Sensor       ", fg = "orange", command = touchCallBack)
+temperatureButton = Button(top, text ="Temperature Sensor", fg="green", command = temperatureCallBack)
+LEDButton = Button(top, text ="               LED              ", fg="blue",command = LEDCallBack)
+turnNobButton = Button(top, text ="          Turn Nob         ", fg="indigo", command = turnNobCallBack)
+quitbutton = Button(top, text = "               Exit               ", fg="violet", command = quit)
 
 label.pack()
 helloButton.pack()
@@ -64,5 +65,6 @@ touchButton.pack()
 temperatureButton.pack()
 LEDButton.pack()
 turnNobButton.pack()
+quitbutton.pack()
 
 top.mainloop()
