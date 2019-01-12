@@ -45,7 +45,8 @@ void loop() {
 	}
 
 	if (pastTouchVal != touchVal) {
-		Serial.println("touch");
+		Serial.print("touch:");
+		Serial.println(touchVal);
 		pastTouchVal = touchVal;
 	}
 }
