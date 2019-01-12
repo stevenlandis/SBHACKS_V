@@ -16,14 +16,14 @@ import time
 top = Tk()
 top.title("Welcome to this demo")
 top.geometry("600x400+300+200")
-top.config(background = "black")
+top.config(background = "white")
 
 top.resizable(0,0)
 label = Label( top, text='Click on the buttons to see the magic', bg = "white")
 
-top.iconbitmap('favicon.ico')
+#top.iconbitmap('favicon.ico')
 
-def helloCallBack():
+def helloCallBack(self):
    messagebox.showinfo( "Hello Python", "Hello World")
 
 def touchCallBack():
@@ -63,6 +63,30 @@ LEDButton = Button(top, text ="               LED              ", fg="blue",comm
 turnNobButton = Button(top, text ="          Turn Nob         ", fg="indigo", command = turnNobCallBack)
 quitbutton = Button(top, text = "               Exit               ", fg="violet", command = quit)
 
+
+
+top.bind('k', helloCallBack)
+
+mainframe = Frame(top)
+mainframe.grid(column=0,row=0, sticky=(N,W,E,S) )
+mainframe.columnconfigure(0, weight = 1)
+mainframe.rowconfigure(0, weight = 1)
+mainframe.pack(pady = 100, padx = 100)
+
+tkvar = StringVar(top)
+choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
+tkvar.set('Pizza')
+popupMenu = OptionMenu(mainframe, tkvar, *choices)
+Label(mainframe, text="Choose a dish").grid(row = 1, column = 1)
+popupMenu.grid(row = 2, column =1)
+
+# on change dropdown value
+def change_dropdown(*args):
+    print( tkvar.get() )
+
+# link function to change dropdown
+tkvar.trace('w', change_dropdown)
+
 label.pack()
 helloButton.pack()
 touchButton.pack()
@@ -70,5 +94,4 @@ temperatureButton.pack()
 LEDButton.pack()
 turnNobButton.pack()
 quitbutton.pack()
-
 top.mainloop()
