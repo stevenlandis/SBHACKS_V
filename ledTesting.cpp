@@ -1,3 +1,7 @@
+// Install libmraa first by running these commands:
+// $ g++ mraa_led.cpp -o led_c++
+// $ sudo ./led_c++
+
 /* LED testing */
 #include <errno.h>
 #include <signal.h>
