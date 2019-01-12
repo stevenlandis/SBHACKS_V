@@ -3,6 +3,10 @@ int button = 4;
 int touch = A1;
 int rotary = A2;
 
+typedef struct {
+	int A, B, Click;
+} Encoder;
+
 void setup() {
 	pinMode(light, INPUT);
 	pinMode(button, INPUT);
