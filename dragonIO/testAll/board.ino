@@ -34,7 +34,7 @@ void loop() {
 	
 	if (pastButtonVal != buttonVal) {
 		Serial.print("button:");
-		Serial.print(buttonVal);
+		Serial.println(buttonVal);
 		pastButtonVal = buttonVal;
 	}	
 
