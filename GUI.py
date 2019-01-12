@@ -1,17 +1,11 @@
 #!/usr/bin/python
-
-
 # Code to add widgets will go here...
-
 
 import tkinter
 from tkinter import messagebox
 from tkinter import *
 from GPIOLibrary import GPIOProcessor
 import time
-
-
-
 
 top = Tk()
 top.title("Welcome to this demo")
@@ -61,11 +55,14 @@ touchButton = Button(top, text ="     Touch Sensor       ", fg = "orange", comma
 temperatureButton = Button(top, text ="Temperature Sensor", fg="green", command = temperatureCallBack)
 LEDButton = Button(top, text ="               LED              ", fg="blue",command = LEDCallBack)
 turnNobButton = Button(top, text ="          Turn Nob         ", fg="indigo", command = turnNobCallBack)
-quitbutton = Button(top, text = "               Exit               ", fg="violet", command = quit)
+
+def quitter(self):
+   top.destroy()
 
 
-
-top.bind('k', helloCallBack)
+top.bind('h', helloCallBack)
+top.bind('q', quitter)
+top.bind('<Escape>', quitter)
 
 mainframe = Frame(top)
 mainframe.grid(column=0,row=0, sticky=(N,W,E,S) )
@@ -93,5 +90,4 @@ touchButton.pack()
 temperatureButton.pack()
 LEDButton.pack()
 turnNobButton.pack()
-quitbutton.pack()
 top.mainloop()
