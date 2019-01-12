@@ -1,16 +1,20 @@
-from __future__ import print_function
-import websocket
+from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
-ip = "http://169.231.141.17"
+import sys
 
-def main():
-    websocket.enableTrace(True)
-    ws = websocket.create_connection(ip)
-    print("Sending 'Hello, World'...")
-    ws.send("Hello, World")
-    print("Sent")
-    ws.close()
+port = int(sys.argv[1])
 
+class SimpleEcho(WebSocket):
 
-if __name__ == "__main__":
-    main()
+    def handleMessage(self):
+        # echo message back to client
+        self.sendMessage(self.data)
+
+    def handleConnected(self):
+        print(self.address, 'connected')
+
+    def handleClose(self):
+        print(self.address, 'closed')
+
+server = SimpleWebSocketServer('', port, SimpleEcho)
+server.serveforever()

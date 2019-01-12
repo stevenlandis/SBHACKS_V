@@ -1,19 +1,36 @@
-from __future__ import print_function
 import websocket
-import asyncio
-
-ip = "http://169.231.141.17"
-
-async def main():
-    websocket.enableTrace(True)
-    ws = websocket.create_connection(ip)
-    print("Receiving...")
-    result = await ws.recv()
-    print("Received '%s'" % result)
-    ws.close()
+import _thread as thread
+import time
+import sys
 
 
+port = sys.argv[1]
+
+
+def on_message(ws, message):
+    print(message)
+
+def on_error(ws, error):
+    print(error)
+
+def on_close(ws):
+    print("### closed ###")
+
+def on_open(ws):
+    def run(*args):
+        while True:
+            time.sleep(5)
+            ws.send("Hello")
+        time.sleep(1)
+        ws.close()
+    thread.start_new_thread(run, ())
 
 
 if __name__ == "__main__":
-    main()
+    websocket.enableTrace(True)
+    ws = websocket.WebSocketApp("ws://localhost:" + port + "/",
+                              on_message = on_message,
+                              on_error = on_error,
+                              on_close = on_close)
+    ws.on_open = on_open
+    ws.run_forever()
