@@ -15,7 +15,11 @@ import time
 
 top = Tk()
 top.title("Welcome to this demo")
-label = Label( top, text='Click on the buttons to see the magic', relief=RAISED )
+top.geometry("600x400+300+200")
+top.config(background = "black")
+
+top.resizable(0,0)
+label = Label( top, text='Click on the buttons to see the magic', bg = "white")
 
 top.iconbitmap('favicon.ico')
 
