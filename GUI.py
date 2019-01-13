@@ -17,7 +17,7 @@ label = Label( top, text='Click on the buttons to see the magic', bg = "white")
 
 #top.iconbitmap('favicon.ico')
 
-def helloCallBack(self):
+def helloCallBack():
    messagebox.showinfo( "Hello Python", "Hello World")
 
 def touchCallBack():
@@ -60,7 +60,6 @@ def quitter(self):
    top.destroy()
 
 
-top.bind('h', helloCallBack)
 top.bind('q', quitter)
 top.bind('<Escape>', quitter)
 
