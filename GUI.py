@@ -57,34 +57,20 @@ def helloCallBack():
    messagebox.showinfo( "Hello Python", "Hello World")
 
 def touchCallBack(data):
-   messagebox.showinfo( "Hello Python", "Hello World")
+   // Add code for touch sensor here
 
 def temperatureCallBack(data):
-   messagebox.showinfo( "Hello Python", "Hello World")
+   // Add code for temperature here
 
 def LEDCallBack(data):
-   GP = GPIOProcessor()
-   try:
-    Pin27 = GP.getPin27()
-    Pin27.out()
-
-    Pin29 = GP.getPin29()
-    Pin29.input()
-
-    for i in range(0,20):
-         pinValue = Pin29.getValue();
-         if pinValue == 1:
-            Pin27.high()
-         else:
-            Pin27.low()
-            time.sleep(1)
+   // Add code light sensor here
 
    finally:
       GP.cleanup()
    #messagebox.showinfo( "Hello Python", "Hello World")
 
 def turnNobCallBack(data):
-   messagebox.showinfo( "Hello Python", "Hello World")
+   // Add code for volume here
 
 
 def changeBackgroundColor():
