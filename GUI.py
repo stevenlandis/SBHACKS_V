@@ -27,18 +27,62 @@ encoderVar.set("one")
 
 
 def getRotItem(self):
-   rotItem = rotVar.get()
+    rotItem = rotVar.get()
+    if (rotItem == "one"):
+        print("action one here")
+    elif (rotItem == "two"):
+        print("action two here")
+    elif (rotItem == "three"):
+        print("action three here")
+        data = ""
 def getTouchItem(self):
-   touchItem = touchVar.get()
+    touchItem = touchVar.get()
+    if (touchItem == "one"):
+        print("action one here")
+    elif (touchItem == "two"):
+        print("action two here")
+    elif (touchItem == "three"):
+        print("action three here")
+        data = ""
 def getLightItem(self):
-   lightItem = lightVar.get()
+    lightItem = lightVar.get()
+    if (lightItem == "one"):
+        print("action one here")
+    elif (lightItem == "two"):
+        print("action two here")
+    elif (lightItem == "three"):
+        print("action three here")
+        data = ""
 def getbuttonActItem(self):
-   buttonActItem = buttonActVar.get()
+    buttonActItem = buttonActVar.get()
+    if (buttonActItem == "one"):
+        print("action one here")
+    elif (buttonActItem == "two"):
+        print("action two here")
+    elif (buttonActItem == "three"):
+        print("action three here")
+        data = ""
 def getClickItem(self):
-   clickItem = clickVar.get()
+    clickItem = clickVar.get()
+    if (clickItem == "one"):
+        print("action one here")
+    elif (clickItem == "two"):
+        print("action two here")
+    elif (clickItem == "three"):
+        print("action three here")
+        data = ""
 def getEncoderItem(self):
-   encoderItem = encoderVar.get()
-
+    encoderItem = encoderVar.get()
+    if (encoderItem == "one"):
+        print("action one here")
+    elif (encoderItem == "two"):
+        print("action two here")
+    elif (encoderItem == "three"):
+        print("action three here")
+        data = ""
+        sendData(data)
+def sendData(data):
+    print("send data")
 
 
 Label(tk, text="Rot:").grid(column=0,row=0)
