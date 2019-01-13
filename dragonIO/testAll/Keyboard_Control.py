@@ -1,8 +1,6 @@
 import keyboard as key
+from time import sleep
 
-def Sleep_Mode():
-    key.Keyboard.keyDown(key.Keyboard.VK_SLEEP)
-    key.Keyboard.keyUp(key.Keyboard.VK_SLEEP)
 
 def Tab():
     key.Keyboard.keyDown(key.Keyboard.VK_TAB)
@@ -45,14 +43,22 @@ def B_Forward():
 
 def Alt_Tab():
     key.Keyboard.keyDown(key.Keyboard.VK_ALT)
+    sleep(0.1)
     key.Keyboard.keyDown(key.Keyboard.VK_TAB)
+    sleep(0.1)
     key.Keyboard.keyUp(key.Keyboard.VK_TAB)
+    sleep(0.1)
     key.Keyboard.keyUp(key.Keyboard.VK_ALT)
 
 def Alt_Shift_Tab():
     key.Keyboard.keyDown(key.Keyboard.VK_SHIFT)
+    sleep(0.1)
     key.Keyboard.keyDown(key.Keyboard.VK_ALT)
+    sleep(0.1)
     key.Keyboard.keyDown(key.Keyboard.VK_TAB)
+    sleep(0.1)
     key.Keyboard.keyUp(key.Keyboard.VK_TAB)
+    sleep(0.1)
     key.Keyboard.keyUp(key.Keyboard.VK_ALT)
+    sleep(0.1)
     key.Keyboard.keyUp(key.Keyboard.VK_SHIFT)

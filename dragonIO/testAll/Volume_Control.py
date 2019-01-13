@@ -1,5 +1,12 @@
 from sound import Sound
 
+
+def Change_Volume(direction):
+    if int(direction) == 1:
+        Increase_Volume()
+        print("Called Change Volume with")
+    else:
+        Decrease_Volume()
 def Increase_Volume():
     Sound.volume_up()
 

@@ -1,31 +1,32 @@
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 import Keyboard_Control as keyboard
 import Volume_Control as volume
+import Windows_Control as windows
 import Youtube_Control as youtube
+import GUI
 import sys
-def Parse_String_From_Board(string):
-    if "rot" in string:
-        turnVal = round(int(string[4:])/1023*100)
-        volume.Set_Volume(turnVal)
-    elif "button" in string:
-        keyboard.Tab()
+import wmi
+import _thread as thread
 
-
-#port = int(sys.argv[1])
+DataString = ''
 port = 22
-youtube.Youtube_Mode()
-class SimpleEcho(WebSocket):
 
+def Socket_Function():
+    server = SimpleWebSocketServer('', port, SimpleEcho)
+    server.serveforever()
+
+class SimpleEcho(WebSocket):
     def handleMessage(self):
         # echo message back to client
-        Parse_String_From_Board(self.data)
+        DataString = self.data
+        GUI.Call_Function(DataString)
+       # print(DataString)
         self.sendMessage(self.data)
-
     def handleConnected(self):
-        print(self.address, 'connected')
-
+        print(self.address, 'Connected')
     def handleClose(self):
-        print(self.address, 'closed')
+        print(self.address, 'Disconnected')
 
-server = SimpleWebSocketServer('', port, SimpleEcho)
-server.serveforever()
+thread.start_new_thread(Socket_Function, ())
+GUI.GUI()
+
