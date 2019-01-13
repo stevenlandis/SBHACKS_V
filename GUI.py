@@ -7,13 +7,13 @@
 import tkinter
 from tkinter import messagebox
 from tkinter import *
-from GPIOLibrary import GPIOProcessor
 import time
 
 
 #global theme
 theme = 0
 chosen = ''
+chosenButton = Button()
 
 top = Tk()
 top.title("Welcome to this demo")
@@ -28,15 +28,22 @@ class HoverBinding:
    def __init__(self, button):
       self.button = button
    def on_enter(self, e):
-       self.button['background'] = 'grey'
+      if(self.button != chosenButton):
+         self.button['background'] = 'grey'
 
    def on_leave(self, e):
-       self.button['background'] = 'SystemButtonFace'
+      if(self.button != chosenButton):
+         self.button['background'] = 'SystemButtonFace'
 
    def enterLeaveBinding(self):
       print("in Enter and Leave")
       self.button.bind("<Enter>", self.on_enter)
       self.button.bind("<Leave>", self.on_leave)
+
+
+def chosenButtonColor(button):
+   print("in buttno color",button)
+   button['background'] = 'SystemButtonFace'
 
 def callFunction(string):
    func = string.split(':')
@@ -55,30 +62,49 @@ def callFunction(string):
 def helloCallBack():
    messagebox.showinfo( "Hello Python", "Hello World")
 
-def touchCallBack(data):
-   // Add code for touch sensor here
+def touchCallBack():
+   # Add code for touch sensor here
+   print("sss")
 
-def temperatureCallBack(data):
-   // Add code for temperature here
+def temperatureCallBack():
+   # Add code for temperature here
    chosen = "temperature"
+   temperatureButton['background'] = 'yellow'
+   global chosenButton
+   print("aaa",chosenButton)
+   chosenButtonColor(chosenButton)
+   chosenButton = temperatureButton
 
 
-def LEDCallBack(data):
-   // Add code light sensor here
+
+def LEDCallBack():
+   # Add code light sensor here
    chosen = "LED"
+   LEDButton['background'] = 'yellow'
+   global chosenButton
+   chosenButtonColor(chosenButton)
+   chosenButton = LEDButton
 
-def turnNobCallBack(data):
-   // Add code for volume here
+def turnNobCallBack():
+   # Add code for volume here
    chosen =  "turnNob"
+   turnNobButton['background'] = 'yellow'
+   global chosenButton
+   chosenButtonColor(chosenButton)
+   chosenButton = turnNobButton
 
 def changeBackgroundColor():
    global theme
    if (theme % 2 ==0):
       theme+=1
       top.config(background = "white")
-      return
-   theme+=1
-   top.config(background = "black")
+   else:
+      theme+=1
+      top.config(background = "black")
+   themeButton['background'] = 'yellow'
+   global chosenButton
+   chosenButtonColor(chosenButton)
+   chosenButton = themeButton
 
 helloButton = Button(top, text ="            Hello              ",fg = "red", command = helloCallBack)
 touchButton = Button(top, text ="     Touch Sensor       ", fg = "orange", command = touchCallBack)
