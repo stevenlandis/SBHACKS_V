@@ -13,6 +13,7 @@ import time
 
 #global theme
 theme = 0
+chosen = ''
 
 top = Tk()
 top.title("Welcome to this demo")
@@ -42,8 +43,6 @@ def callFunction(string):
    if (len(func) < 2):
       print("String sent has errors!")
       return
-   if (func[0] == "touch"):
-      touchcallBack(func[1])
    elif (func[0] == "temperature"):
       temperatureCallBack(func[1])
    elif (func[0] == "LED"):
@@ -61,13 +60,16 @@ def touchCallBack(data):
 
 def temperatureCallBack(data):
    // Add code for temperature here
+   chosen = "temperature"
+
 
 def LEDCallBack(data):
    // Add code light sensor here
+   chosen = "LED"
 
 def turnNobCallBack(data):
    // Add code for volume here
-
+   chosen =  "turnNob"
 
 def changeBackgroundColor():
    global theme
@@ -107,5 +109,5 @@ LEDButton.pack()
 turnNobButton.pack()
 quitbutton.pack()
 themeButton.pack()
-
+callFunction(chosen)
 top.mainloop()
