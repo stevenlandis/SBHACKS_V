@@ -8,7 +8,7 @@ import sys
 import wmi
 import _thread as thread
 import pythoncom
-
+import Speech_Recognition as SR
 DataString = ''
 port = 22
 
@@ -28,6 +28,11 @@ class SimpleEcho(WebSocket):
         print(self.address, 'Connected')
     def handleClose(self):
         print(self.address, 'Disconnected')
+
+
+
+
+
 
 thread.start_new_thread(Socket_Function, ())
 GUI.GUI()

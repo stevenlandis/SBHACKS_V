@@ -25,7 +25,7 @@ def GUI():
 
     tk = Tk()
     tk.title("Sensors and Actions")
-    tk.geometry("600x400+300+200")
+    tk.geometry("250x200+300+200")
     rotVar = StringVar(tk)
     touchVar = StringVar(tk)
     lightVar= StringVar(tk)
