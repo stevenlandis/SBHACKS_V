@@ -21,12 +21,12 @@ def GUI():
     buttonActItem = ''
     clickItem = ''
     encoderItem = ''
-    
+
 
 
     tk = Tk()
     tk.title("Sensors and Actions")
-    tk.geometry("250x200+300+200")
+    tk.geometry("600x400+300+200")
 
     rotVar = StringVar(tk)
     touchVar = StringVar(tk)
@@ -90,13 +90,24 @@ def GUI():
     Label(tk, text="Encoder:").grid(column=0,row=4)
     Label(tk, text="Encoder Click:").grid(column=0,row=5)
 
-    rot = OptionMenu(tk, rotVar, "Volume", "Brightness", command=getRotItem).grid(column=1,row=0)
-    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem).grid(column=1,row=1)
-    light = OptionMenu(tk, lightVar, "Auto-Dim", command=getLightItem).grid(column=1,row=2)
-    buttonAct = OptionMenu(tk, buttonActVar, "Toggle Brightness", "YouTube", command=getbuttonActItem).grid(column=1,row=3)
-    click = OptionMenu(tk, clickVar, "Enter", "New Tab", "Close Tab", command=getClickItem).grid(column=1,row=5)
-    encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs",  command=getEncoderItem).grid(column=1,row=4)
-
+    rot = OptionMenu(tk, rotVar, "Volume", "Brightness", command=getRotItem)
+    rot.config(width=16)
+    rot.grid(column=1,row=0)
+    touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem)
+    touch.config(width=16)
+    touch.grid(column=1,row=1)
+    light = OptionMenu(tk, lightVar, "Auto-Dim", command=getLightItem)
+    light.config(width=16)
+    light.grid(column=1,row=2)
+    buttonAct = OptionMenu(tk, buttonActVar, "Toggle Brightness", "YouTube", command=getbuttonActItem)
+    buttonAct.config(width=16)
+    buttonAct.grid(column=1,row=3)
+    click = OptionMenu(tk, clickVar, "Enter", "New Tab", "Close Tab", command=getClickItem)
+    click.config(width=16)
+    click.grid(column=1,row=4)
+    encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs",  command=getEncoderItem)
+    encoder.config(width=16)
+    encoder.grid(column=1,row=5)
 
     button = Button(tk, text="OK", command=getRotItem)
 
