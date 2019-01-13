@@ -97,3 +97,14 @@ def Ctrl_Shift_Tab():
     key.Keyboard.keyUp(key.Keyboard.VK_CTRL)
     # sleep(0.1)
     key.Keyboard.keyUp(key.Keyboard.VK_SHIFT)
+
+def Ctrl_W(arg):
+    if arg == 0:
+        return
+    key.Keyboard.keyDown(key.Keyboard.VK_CTRL)
+    # sleep(0.1)
+    key.Keyboard.keyDown(key.Keyboard.VK_W)
+    # sleep(0.1)
+    key.Keyboard.keyUp(key.Keyboard.VK_W)
+    # sleep(0.1)
+    key.Keyboard.keyUp(key.Keyboard.VK_CTRL)

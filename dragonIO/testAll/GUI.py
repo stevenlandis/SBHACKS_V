@@ -69,6 +69,8 @@ def GUI():
             Function_Dict['click'] = keyboard.Enter
         elif clickItem == 'New Tab':
             Function_Dict['click'] = youtube.Open_New_Tab
+        elif clickItem == 'Close Tab':
+            Function_Dict['click'] = keyboard.Ctrl_W
     def getEncoderItem(self):
         encoderItem = encoderVar.get()
         if encoderItem == 'Scroll Windows':
@@ -90,7 +92,7 @@ def GUI():
     touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem).grid(column=1,row=1)
     light = OptionMenu(tk, lightVar, "Auto-Dim", command=getLightItem).grid(column=1,row=2)
     buttonAct = OptionMenu(tk, buttonActVar, "Toggle Brightness", "YouTube", command=getbuttonActItem).grid(column=1,row=3)
-    click = OptionMenu(tk, clickVar, "Enter", "New Tab", command=getClickItem).grid(column=1,row=5)
+    click = OptionMenu(tk, clickVar, "Enter", "New Tab", "Close Tab", command=getClickItem).grid(column=1,row=5)
     encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs",  command=getEncoderItem).grid(column=1,row=4)
 
 

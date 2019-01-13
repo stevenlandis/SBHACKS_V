@@ -13,7 +13,7 @@ def Change_Brightness(brightness):
     except Exception as e:
         print(e)
 
-brightState = 'dark'
+brightState = 'light'
 
 def Toggle_Brightness(brightness):
     if brightness == 0:
