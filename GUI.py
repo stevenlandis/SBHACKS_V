@@ -65,10 +65,6 @@ def temperatureCallBack(data):
 def LEDCallBack(data):
    // Add code light sensor here
 
-   finally:
-      GP.cleanup()
-   #messagebox.showinfo( "Hello Python", "Hello World")
-
 def turnNobCallBack(data):
    // Add code for volume here
 
