@@ -1,139 +1,44 @@
-#!/usr/bin/python
-
-
-# Code to add widgets will go here...
-
-
-import tkinter
-from tkinter import messagebox
 from tkinter import *
-import time
+
+rotItem = ''
 
 
-#global theme
+tk = Tk()
+tk.title("Sensors and Actions")
+tk.geometry("600x400+300+200")
+rotVar = StringVar(tk)
+touchVar = StringVar(tk)
+lightVar= StringVar(tk)
+buttonActVar = StringVar(tk)
+clickVar = StringVar(tk)
+encoderVar = StringVar(tk)
+
+rotVar.set("one")
+touchVar.set("one")
+lightVar.set("one")
+buttonActVar.set("one")
+clickVar.set("one")
+encoderVar.set("one")
 
 
-top = Tk()
-top.title("Welcome to this demo")
-top.geometry("600x400+300+200")
-top.config(background = "black")
-top.resizable(0,0)
-label = Label( top, text='Click on the buttons to see the magic', bg = "white")
-#top.iconbitmap('favicon.ico')
-theme = 0
-chosen = ''
-chosenButton = Button()
+def getRotItem(self):
+    rotItem = rotVar.get()
 
-class HoverBinding:
-   def __init__(self, button):
-      self.button = button
-   def on_enter(self, e):
-      if(self.button != chosenButton):
-         self.button['background'] = 'grey'
+Label(tk, text="Rot:").grid(column=0,row=0)
+Label(tk, text="Touch:").grid(column=0,row=1)
+Label(tk, text="Light:").grid(column=0,row=2)
+Label(tk, text="Button:").grid(column=0,row=3)
+Label(tk, text="Click:").grid(column=0,row=4)
+Label(tk, text="Encoder:").grid(column=0,row=5)
 
-   def on_leave(self, e):
-      if(self.button != chosenButton):
-         self.button['background'] = 'SystemButtonFace'
-
-   def enterLeaveBinding(self):
-      print("in Enter and Leave")
-      self.button.bind("<Enter>", self.on_enter)
-      self.button.bind("<Leave>", self.on_leave)
+rot = OptionMenu(tk, rotVar, "one", "two", "three", command=ok).grid(column=1,row=0)
+touch = OptionMenu(tk, touchVar, "one", "two", "three").grid(column=1,row=1)
+light = OptionMenu(tk, lightVar, "one", "two", "three").grid(column=1,row=2)
+buttonAct = OptionMenu(tk, buttonActVar, "one", "two", "three").grid(column=1,row=3)
+click = OptionMenu(tk, clickVar, "one", "two", "three").grid(column=1,row=4)
+encoder = OptionMenu(tk, encoderVar, "one", "two", "three").grid(column=1,row=5)
 
 
-def chosenButtonColor(button):
-   print("in buttno color",button)
-   button['background'] = 'SystemButtonFace'
+button = Button(tk, text="OK", command=ok)
 
-def callFunction(string):
-   func = string.split(':')
-   if (len(func) < 2):
-      print("String sent has errors!")
-      return
-   elif (func[0] == "temperature"):
-      temperatureCallBack(func[1])
-   elif (func[0] == "LED"):
-      LEDCallBack(func[1])
-   elif (func[0] == "turnNob"):
-      turnNobCallBack(func[1])
-   elif (func[0] == "light"):
-      lightCallBack(func[1])
-
-def helloCallBack():
-   messagebox.showinfo( "Hello Python", "Hello World")
-
-def touchCallBack():
-   # Add code for touch sensor here
-   print("sss")
-
-def temperatureCallBack():
-   # Add code for temperature here
-   chosen = "temperature"
-   temperatureButton['background'] = 'yellow'
-   global chosenButton
-   print("aaa",chosenButton)
-   chosenButtonColor(chosenButton)
-   chosenButton = temperatureButton
-
-
-
-def LEDCallBack():
-   # Add code light sensor here
-   chosen = "LED"
-   LEDButton['background'] = 'yellow'
-   global chosenButton
-   chosenButtonColor(chosenButton)
-   chosenButton = LEDButton
-
-def turnNobCallBack():
-   # Add code for volume here
-   chosen =  "turnNob"
-   turnNobButton['background'] = 'yellow'
-   global chosenButton
-   chosenButtonColor(chosenButton)
-   chosenButton = turnNobButton
-
-def changeBackgroundColor():
-   global theme
-   if (theme % 2 ==0):
-      theme+=1
-      top.config(background = "white")
-   else:
-      theme+=1
-      top.config(background = "black")
-   themeButton['background'] = 'yellow'
-   global chosenButton
-   chosenButtonColor(chosenButton)
-   chosenButton = themeButton
-
-helloButton = Button(top, text ="            Hello              ",fg = "red", command = helloCallBack)
-touchButton = Button(top, text ="     Touch Sensor       ", fg = "orange", command = touchCallBack)
-temperatureButton = Button(top, text ="Temperature Sensor", fg="green", command = temperatureCallBack)
-LEDButton = Button(top, text ="               LED              ", fg="blue",command = LEDCallBack)
-turnNobButton = Button(top, text ="          Turn Nob         ", fg="indigo", command = turnNobCallBack)
-quitbutton = Button(top, text = "               Exit               ", fg="violet", command = quit)
-themeButton = Button(top, text = "             Theme              ", fg="turquoise", command = changeBackgroundColor)
-
-buttonList = []
-buttonList.append(HoverBinding(helloButton))
-buttonList.append(HoverBinding(touchButton))
-buttonList.append(HoverBinding(temperatureButton))
-buttonList.append(HoverBinding(LEDButton))
-buttonList.append(HoverBinding(turnNobButton))
-buttonList.append(HoverBinding(quitbutton))
-buttonList.append(HoverBinding(themeButton))
-for item in buttonList:
-   print("something something")
-   item.enterLeaveBinding()
-
-
-label.pack()
-helloButton.pack()
-touchButton.pack()
-temperatureButton.pack()
-LEDButton.pack()
-turnNobButton.pack()
-quitbutton.pack()
-themeButton.pack()
-callFunction(chosen)
-top.mainloop()
+mainloop()
