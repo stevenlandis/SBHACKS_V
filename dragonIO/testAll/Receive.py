@@ -7,11 +7,13 @@ import GUI
 import sys
 import wmi
 import _thread as thread
+import pythoncom
 
 DataString = ''
 port = 22
 
 def Socket_Function():
+    pythoncom.CoInitialize()
     server = SimpleWebSocketServer('', port, SimpleEcho)
     server.serveforever()
 
