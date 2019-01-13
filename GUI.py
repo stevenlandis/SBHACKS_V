@@ -11,9 +11,7 @@ import time
 
 
 #global theme
-theme = 0
-chosen = ''
-chosenButton = Button()
+
 
 top = Tk()
 top.title("Welcome to this demo")
@@ -22,7 +20,9 @@ top.config(background = "black")
 top.resizable(0,0)
 label = Label( top, text='Click on the buttons to see the magic', bg = "white")
 #top.iconbitmap('favicon.ico')
-
+theme = 0
+chosen = ''
+chosenButton = Button()
 
 class HoverBinding:
    def __init__(self, button):
