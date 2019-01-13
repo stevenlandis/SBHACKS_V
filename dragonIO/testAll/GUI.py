@@ -23,9 +23,11 @@ def GUI():
     encoderItem = ''
 
 
+
     tk = Tk()
     tk.title("Sensors and Actions")
     tk.geometry("250x200+300+200")
+
     rotVar = StringVar(tk)
     touchVar = StringVar(tk)
     lightVar= StringVar(tk)
@@ -35,7 +37,7 @@ def GUI():
 
     rotVar.set("Volume")
     touchVar.set("YouTube")
-    lightVar.set("Auto-Dim")
+    lightVar.set("Empty")
     buttonActVar.set('Toggle Brightness')
     clickVar.set("Enter")
     encoderVar.set("Scroll Windows")
@@ -55,6 +57,11 @@ def GUI():
             Function_Dict['touch'] = windows.Toggle_Brightness
     def getLightItem(self):
         lightItem = lightVar.get()
+        if lightItem == "Auto-Dim":
+            print("In auto-dim mode....")
+            Function_Dict['light'] = windows.Auto_Brightness
+        elif lightItem == "Empty":
+            Function_Dict['light'] = nothing
 
     def getbuttonActItem(self):
         buttonActItem = buttonActVar.get()
@@ -90,7 +97,7 @@ def GUI():
 
     rot = OptionMenu(tk, rotVar, "Volume", "Brightness", command=getRotItem).grid(column=1,row=0)
     touch = OptionMenu(tk, touchVar, "YouTube", "Toggle Brightness", command=getTouchItem).grid(column=1,row=1)
-    light = OptionMenu(tk, lightVar, "Auto-Dim", command=getLightItem).grid(column=1,row=2)
+    light = OptionMenu(tk, lightVar, "Empty", "Auto-Dim", command=getLightItem).grid(column=1,row=2)
     buttonAct = OptionMenu(tk, buttonActVar, "Toggle Brightness", "YouTube", command=getbuttonActItem).grid(column=1,row=3)
     click = OptionMenu(tk, clickVar, "Enter", "New Tab", "Close Tab", command=getClickItem).grid(column=1,row=5)
     encoder = OptionMenu(tk, encoderVar, "Scroll Windows", "Scroll Tabs",  command=getEncoderItem).grid(column=1,row=4)
@@ -108,6 +115,7 @@ def Call_Function(string):
     arg = int(split_string[1])
     print('device: {}, arg: {}'.format(deviceName, arg))
     if deviceName in Function_Dict:
+        print("Found device in the function dictionary")
         try:
             Function_Dict[deviceName](arg)
         except Exception as e:

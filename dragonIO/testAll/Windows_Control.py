@@ -29,3 +29,6 @@ def Toggle_Brightness(brightness):
             Change_Brightness(0)
     except Exception as e:
         print(e)
+def Auto_Brightness(brightness):
+    Change_Brightness(brightness)
+
